@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import narif.poc.spring.microservices.employeeservice.businessservice.EmployeeService;
 import narif.poc.spring.microservices.employeeservice.config.EmployeeServiceConfig;
 import narif.poc.spring.microservices.employeeservice.dao.EmployeeJpaDao;
+import narif.poc.spring.microservices.employeeservice.entities.Department;
 import narif.poc.spring.microservices.employeeservice.entities.Employee;
+import narif.poc.spring.microservices.employeeservice.microclients.DepartmentServiceClient;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -19,6 +21,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
 	private EmployeeServiceConfig empConfigData;
+	
+	@Autowired
+	private DepartmentServiceClient dptClient;
 	
 	@Override
 	public List<Employee> findAllEmployees() {
@@ -41,6 +46,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println(devOnlyValue);
 		System.out.println(defaultOnlyValue);
 		return Arrays.asList(header,envName,devOnlyValue,defaultOnlyValue);
+	}
+
+	@Override
+	public Department getDepartmentForEmployee(Employee emp) {
+		return dptClient.getDepartment(emp.getDepartmentId());
 	}
 
 }
