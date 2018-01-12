@@ -9,6 +9,6 @@ import narif.poc.spring.microservices.employeeservice.entities.Department;
 
 @FeignClient("DEPARTMENTSERVICE")
 public interface DepartmentServiceClient {
-	@RequestMapping(method=RequestMethod.GET,value="/DepartService/departments/{deptId}", consumes="application/json")
+	@RequestMapping(method=RequestMethod.GET,value="/departments/{deptId}", consumes="application/json")
 	public Department getDepartment(@PathVariable("deptId") Long departmentId);
 }

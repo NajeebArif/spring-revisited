@@ -11,7 +11,13 @@ public interface EmployeeService {
 	
 	public Employee findEmployeeForEmpId(Long employeeId);
 	
-	public List<String> checkTheConfigData();
+	public void createEmployee(Employee emp);
+	
+	public Employee updateEmployeeData(Employee oldEmployee, Employee newEmployee);
+	
+	public List<Employee> getAllEmployeesForDepartmentId(Long departmentId);
 	
 	public Department getDepartmentForEmployee(Employee emp);
+	
+	
 }
