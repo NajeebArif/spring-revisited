@@ -25,4 +25,16 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return deptRepo.getOne(departmentId);
 	}
 
+	@Override
+	public Department deleteDepartment(Department dept) {
+		deptRepo.delete(dept);
+		return dept;
+	}
+
+	@Override
+	public Department createDepartment(Department dept) {
+		deptRepo.saveAndFlush(dept);
+		return dept;
+	}
+
 }

@@ -59,6 +59,7 @@ public class EmployeesController {
 	}
 	
 	@RequestMapping(value="{empId}",method=RequestMethod.PUT)
+	@ResponseStatus(code=HttpStatus.ACCEPTED)
 	public Employee updateEmployee(@PathVariable("empId") Employee oldEmp, Employee newEmp) {
 		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empService.updateEmployeeData(oldEmp, newEmp);
