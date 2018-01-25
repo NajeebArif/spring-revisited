@@ -27,7 +27,7 @@ public class JwtOauth2Config extends AuthorizationServerConfigurerAdapter {
 	private TokenStore tokenStore;
 	
 	@Autowired
-	private DefaultTokenServices tokenServices;
+	private DefaultTokenServices defaultTokenServices;
 	
 	@Autowired
 	private JwtAccessTokenConverter jwtAccessTokenConverter;
@@ -39,8 +39,12 @@ public class JwtOauth2Config extends AuthorizationServerConfigurerAdapter {
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
 		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(jwtTokenEnhancer,jwtAccessTokenConverter));
-		endpoints.tokenStore(tokenStore).accessTokenConverter(jwtAccessTokenConverter)
-		.authenticationManager(authenticationManager).userDetailsService(userDetailsService);
+		endpoints.tokenStore(tokenStore)
+		.tokenEnhancer(tokenEnhancerChain)
+//		.tokenServices(tokenServices)
+		.accessTokenConverter(jwtAccessTokenConverter)
+		.authenticationManager(authenticationManager)
+		.userDetailsService(userDetailsService);
 	}
 	
 	@Override

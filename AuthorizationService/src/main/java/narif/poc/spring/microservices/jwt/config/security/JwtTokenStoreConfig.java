@@ -40,7 +40,7 @@ public class JwtTokenStoreConfig {
 	public DefaultTokenServices tokenServices() {
 		DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
 		defaultTokenServices.setTokenStore(tokenStore());
-		defaultTokenServices.setTokenEnhancer(jwtTokenEnhancer());
+		defaultTokenServices.setSupportRefreshToken(true);
 		return defaultTokenServices;
 	}
 }
