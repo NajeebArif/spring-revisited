@@ -1,4 +1,4 @@
-package narif.poc.spring.microservices.oauth.config;
+package narif.poc.spring.microservices.jwt.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

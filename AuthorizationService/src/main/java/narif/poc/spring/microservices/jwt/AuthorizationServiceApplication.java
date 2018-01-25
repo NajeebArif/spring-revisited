@@ -1,4 +1,4 @@
-package narif.poc.spring.microservices.oauth;
+package narif.poc.spring.microservices.jwt;
 
 import java.util.HashMap;
 import java.util.Map;
