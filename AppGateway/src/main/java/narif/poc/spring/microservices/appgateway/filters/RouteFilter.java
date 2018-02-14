@@ -41,7 +41,7 @@ import com.netflix.zuul.context.RequestContext;
 import narif.poc.spring.microservices.appgateway.models.AbTestingRoute;
 import narif.poc.spring.microservices.appgateway.utils.FilterUtils;
 
-@Component
+//@Component
 public class RouteFilter extends ZuulFilter {
 	private static final int FILTER_ORDER =  1;
     private static final boolean SHOULD_FILTER =true;

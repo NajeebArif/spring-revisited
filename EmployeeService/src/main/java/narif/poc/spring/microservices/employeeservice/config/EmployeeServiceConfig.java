@@ -14,6 +14,12 @@ public class EmployeeServiceConfig {
 	
 	@Value("${some.useless.property:default}")
 	private String uselessProperty;
+	
+	@Value("${redis.server.host}")
+	private String redisServer;
+	
+	@Value("${redis.port}")
+	private String redisPort;
 
 	public String getEnv() {
 		return employeeserviceEnv;
@@ -25,6 +31,14 @@ public class EmployeeServiceConfig {
 
 	public String getUselessProperty() {
 		return uselessProperty;
+	}
+
+	public String getRedisServer() {
+		return "localhost";
+	}
+
+	public String getRedisPort() {
+		return "6379";
 	}
 	
 	

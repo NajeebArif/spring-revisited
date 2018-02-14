@@ -1,0 +1,6 @@
+narif\poc\spring\microservices\jwt\config\ServiceConfig.class
+narif\poc\spring\microservices\jwt\config\security\JwtTokenStoreConfig.class
+narif\poc\spring\microservices\jwt\AuthorizationServiceApplication.class
+narif\poc\spring\microservices\jwt\config\security\JwtTokenEnhancer.class
+narif\poc\spring\microservices\jwt\config\security\WebSecurityConfigurer.class
+narif\poc\spring\microservices\jwt\config\security\JwtOauth2Config.class

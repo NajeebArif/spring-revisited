@@ -49,14 +49,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 			threadPoolProperties= {@HystrixProperty(name="coreSize",value="5")})
 	@Override
 	public List<Employee> findAllEmployees() {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		randomlyLongRunning();
 		return empRepo.findAll();
 	}
 
 	@Override
 	public Employee findEmployeeForEmpId(Long employeeId) {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empRepo.getOne(employeeId);
 	}
 	
@@ -67,28 +67,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 	threadPoolProperties= {@HystrixProperty(name="coreSize",value="30")
 						  ,@HystrixProperty(name="maxQueueSize",value="10")})
 	public Department getDepartmentForEmployee(Employee emp) {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
-		randomlyLongRunning();
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return deptRestTempClient.getDepartmentForDepartmentId(emp.getDepartmentId());
 	}
 	
 	@FallbackMethod(forHystrixWrappedMethod="getDepartmentForEmployee")
 	public Department getDepartmentForEmployeeFallBack(Employee emp) {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.error("ERROR: Occured while fetching Departments details while RestTemplate clients so swithcing back to Feign clients");
 		logger.info("Fallback executed for getDepartmentForEmployee method");
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return dptClient.getDepartment(emp.getDepartmentId());
 	}
 
 	@Override
 	public void createEmployee(Employee emp) {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		empRepo.saveAndFlush(emp);
 	}
 
 	@Override
 	@HystrixCommand
 	public Employee updateEmployeeData(Employee oldEmployee, Employee newEmployee) {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		Class<?> empClazz = newEmployee.getClass();
 		Field[] fieldsOfOld = oldEmployee.getClass().getDeclaredFields();
 		for(Field oldField: fieldsOfOld) {
@@ -111,7 +111,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	@HystrixCommand(fallbackMethod="getAllEmployeesForDepartmentIdFallback")
 	public List<Employee> getAllEmployeesForDepartmentId(Long departmentId) {
-		logger.debug("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmpoyeeServiceImpl correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empRepo.findByDepartmentId(departmentId);
 	}
 	
@@ -122,9 +122,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	private void randomlyLongRunning() {
-		Random ran = new Random();
-		int randNum = ran.nextInt((4-1)+1)+1;
-		if(randNum==4)sleep();
+
 	}
 
 	private void sleep() {

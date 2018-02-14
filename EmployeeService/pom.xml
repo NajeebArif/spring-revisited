@@ -25,6 +25,9 @@
 		<spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
 		<oracle-db-version>12.1.0.2</oracle-db-version>
 		<hikari-cp-version>2.6.0</hikari-cp-version>
+		<redis-version>1.7.4.RELEASE</redis-version>
+		<jedis-version>2.9.0</jedis-version>
+		<apache-commons-version>2.0</apache-commons-version>
 	</properties>
 
 	<dependencyManagement>
@@ -49,6 +52,22 @@
 					<artifactId>tomcat-jdbc</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>${apache-commons-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,6 +104,14 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-kafka</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

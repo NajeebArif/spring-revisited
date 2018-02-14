@@ -35,38 +35,38 @@ public class EmployeesController {
 	
 	@RequestMapping
 	public List<Employee> getAllEmployees(){
-		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empService.findAllEmployees();
 	}
 	
 	@RequestMapping(value= "{empId}",method=RequestMethod.GET)
 	public Employee getEmployeeForEmployeeId(@PathVariable("empId") Employee emp) {
-		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return emp;
 	}
 	
 	@RequestMapping(value="{empId}/dept")
 	public Department getEmployeesDepartment(@PathVariable("empId") Employee emp) {
-		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empService.getDepartmentForEmployee(emp);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public void createEmployee(Employee emp) {
-		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		empService.createEmployee(emp);
 	}
 	
 	@RequestMapping(value="{empId}",method=RequestMethod.PUT)
 	public Employee updateEmployee(@PathVariable("empId") Employee oldEmp, Employee newEmp) {
-		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empService.updateEmployeeData(oldEmp, newEmp);
 	}
 	
 	@RequestMapping(value="forDpt/{deptId}")
 	public List<Employee> getAllEmployeesForDepartment(@PathVariable("deptId") Long deptId){
-		logger.debug("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
+		logger.info("EmployeesController correlation id: "+UserContextHolder.getContext().getCorrelationId());
 		return empService.getAllEmployeesForDepartmentId(deptId);
 	}
 }
