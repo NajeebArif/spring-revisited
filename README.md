@@ -8,5 +8,7 @@ A very simple application to learn various aspects of a Microservice architectur
 3) Spring cloud eureka (service discovery and Client side load balancing)
 4) Client side resiliency patterns like Circuit Breakers, Fallbacks and Bulkheads using Hystrix
 5) Application Gateway using Spring cloud Zuul
+6) Spring OAuth2 based security
+7) Distributed caching and Event Driven architecture using Kafka and Redis
 
 #### *The project is not dockerized yet but it will be soon enough.
