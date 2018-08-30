@@ -3,7 +3,7 @@
 A very simple application to learn various aspects of a Microservice architecture using Spring Boot
 
 ## Stuffs which can be found here:
-1) Spring boot based microservices services
+1) Spring boot based microservices 
 2) Spring cloud config (centralized config server)
 3) Spring cloud eureka (service discovery and Client side load balancing)
 4) Client side resiliency patterns like Circuit Breakers, Fallbacks and Bulkheads using Hystrix
