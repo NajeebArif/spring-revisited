@@ -19,7 +19,7 @@ Stuffs inside:
 
 3) Service Discovery and Client side load balancing(We as a developer love this approach i.e. having the maximum control, but recently Kubernetes+Istio has grown popular for it)
 
-4)MOST IMP(in any app): Resiliency patterns: like Circuit Breakers, Fallbacks and Bulkheads. These patterns could be used in anything(Java EE, ADF, SPA(using OJET or Angular),... ), not just Microservices. Resiliency patterns, like TDD/BDD, should be incorporated as a practice.
+4) MOST IMP(in any app): Resiliency patterns: like Circuit Breakers, Fallbacks and Bulkheads. These patterns could be used in anything(Java EE, ADF, SPA(using OJET or Angular),... ), not just Microservices. Resiliency patterns, like TDD/BDD, should be incorporated as a practice.
 
 5) Security: OAuth 2, JWT using a centralized Auth server.
 
